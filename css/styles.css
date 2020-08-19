@@ -1,0 +1,10 @@
+/* Banner Image with Hero Image and Text */
+body {
+    height: 50vh;
+    background-image: linear-gradient(to right bottom, rgba(30,115,172,0.7), rgba(142,57,153,0.6)), url(race.jpeg);
+    background-size: cover;
+    background-position: 35% 50%;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
+    position: relative;
+}
