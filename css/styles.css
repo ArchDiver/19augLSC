@@ -22,4 +22,8 @@ table, th, td {
     text-align: center;
     margin: 10%;
     border: 10px solid black;
-  }
+}
+.btn-primary{
+    background-color: coral;
+}
+
