@@ -6,27 +6,43 @@ function getJson(){
     fetch(`https://ergast.com/api/f1/${season}/${round}/driverStandings.json`)
     .then(response => response.json())
     .then(rawData => {
-        console.log(rawData)
-        let givenName = rawData.MRData.StandingsTable.StandingsLists[0].DriverStandings[0].Driver.givenName;
+        for( let i = 0; i < 7; i++){
+            let table_row = document.querySelectorAll('.ranking')[i];
 
-        let given_name_text = document.createElement('h3');
-        given_name_text.innerHTML = givenName;
-        document.body.append(given_name_text);
+            // Postition
+            let position = rawData.MRData.StandingsTable.StandingsLists[0].DriverStandings[i].position;
+            let show_postion = document.createElement('td');
+            show_postion.innerHTML = show_postion;
+            ranking.append(show_postion);
 
-        // family name
-        let familyName = rawData.MRData.StandingsTable.StandingsLists[0].DriverStandings[0].Driver.familyName;
 
-        let familyName_text = document.querySelector('#familyName');
-        familyName_text.innerHTML = familyName;
+            // Name
+            let given = rawData.MRData.StandingsTable.StandingsLists[0].DriverStandings[i].Driver.givenName;
+            let family = rawData.MRData.StandingsTable.StandingsLists[0].DriverStandings[i].Driver.familyName;
+            let show_name = document.createElement('td');
+            show_name.innerHTML = given + " " + family;
+            ranking.append(show_name);
 
-        // Get first 3 Constructors for F1 cars
-        for(let i =0; i<3; i++){
-            let Constructors_name = rawData.MRData.StandingsTable.StandingsLists[0].DriverStandings[i].Constructors[0].name;
-            let display_constructors = document.createElement('h1');
-            display_constructors.innerHTML = Constructors_name;
-            document.body.append(display_constructors);
-        }
+            // Nationality
+            let nationality = rawData.MRData.StandingsTable.StandingsLists[0].DriverStandings[i].nationality;
+            let show_nat = document.createElement('td');
+            show_nat.innerHTML = show_nat;
+            ranking.append(show_nat);
+
+            // Sponsor
+            let sponsor = rawData.MRData.StandingsTable.StandingsLists[0].DriverStandings[i].Constructors[0].name;
+            let show_sponsor = document.createElement('td');
+            show_sponsor.innerHTML = show_sponsor;
+            ranking.append(show_sponsor);
+
+            // Points
+            let points = rawData.MRData.StandingsTable.StandingsLists[0].DriverStandings[i].points;
+            let show_points = document.createElement('td');
+            show_points.innerHTML = show_points;
+            ranking.append(show_points);
+        }    
     })
 
     console.log(season,round)
 }
+
